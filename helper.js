@@ -1,7 +1,5 @@
 "use strict";
 
-let flights = require('./models/flights');
-
 let helper = {
 	randomstring : function( Length ){
 	    let s = '';
@@ -15,6 +13,20 @@ let helper = {
 	    return s;
 	},
 
+	getPassengers : function( HANHKHACH ){
+		let Passengers = [];
+		for(let i = 0; i < HANHKHACH.length; i++) {
+			let data = {
+				MADATCHO : "", // Khởi tạo rỗng mã đặt chỗ
+				DANHXUNG : HANHKHACH[i].DANHXUNG,
+				HO 	   	 : HANHKHACH[i].HO,
+				TEN 	 : HANHKHACH[i].TEN
+			};
+			Passengers.push(data);
+		}
+		return Passengers;
+	},
+	
 	getTimeBooking : function(){
 	    let date = new Date();
 
@@ -35,10 +47,6 @@ let helper = {
 	    day = (day < 10 ? "0" : "") + day;
 
 	    return year + "-" + month + "-" + day + " " + hour + ":" + min + ":" + sec;
-	},
-
-	getTotalPaid : function(MADATCHO){
-
 	}
 }
 
