@@ -1,1 +1,3 @@
-config.js
+(function () {
+	var app = angular.module('mainApp', []);
+})();
