@@ -121,7 +121,7 @@
 			postData.CHUYENBAY[0].MACHUYENBAY = flight.MA;
 			postData.CHUYENBAY[0].NGAY = flight.NGAY;
 			postData.CHUYENBAY[0].HANG = flight.HANG;
-			postData.CHUYENBAY[0].MUCGIA = flight.GIA;
+			postData.CHUYENBAY[0].MUCGIA = flight.MUCGIA;
 
 			console.log(postData);
 			
