@@ -224,7 +224,48 @@ let bookingController = {
     },
 
     deleteBooking : function( req, res ) {
-    	res.status(200).json('Hello');
+    	let error = false;
+    	booking.remove({ 'MA' : req.params.id }, function( err, removed ) {
+    		if( err ) error = true;
+    	})
+
+    	let promise = new Promise(function( resolve, reject ) {
+    		//remove passengers with this booking
+    		passengers.remove({ 'MADATCHO' : req.params.id }, function( err, removed ) {
+    			if( err ) error = true;
+    			else {
+    				flightDetails.find({ 'MADATCHO' : req.params.id }, '-_id -__v -MADATCHO -NGAY' , function( err, result ) {
+    					if( err ) error = true;
+    					else {
+    						for (let i = 0; i < result.length; i++) {
+    							flights.findOne({ 'MA' : result[i].MACHUYENBAY, 'HANG' : result[i].HANG, 'MUCGIA' : result[i].MUCGIA }, function( err, flight ) {
+    								if( err ) error = true;
+    								else {
+    									//update lại số lượng ghế
+    									flight.SOLUONGGHE += removed.result.n;
+    									flight.save(function( err ) {
+    										if( err ) error = true;
+    										resolve();
+    									})
+    								}
+    							})
+    						}
+    					}
+    				});
+    			}
+    		});
+    	})
+
+        promise.then(function() {
+        	flightDetails.remove({ 'MADATCHO' : req.params.id}, function( err, removed ) {
+        		if( err ) error = true;
+        		if( !error ) {
+        			res.status(200).json({'error' : false, 'messages' : 'Remove Booking Successfully'});
+        		}
+        		else res.status(400).json({'error' : true, 'messages' : 'Can remove this booking'});
+        	})
+        })
+        .catch(console.error);	
     }
 }
 
