@@ -29,8 +29,8 @@ var flightController = {
                         res.status(400).json({ "error": true, "messages": "Flight Not Found" });
                     }
                 })
-            } else if (Object.keys(req.query).length === 3) { //....url?date=''&passengers=''&rate=''
-                flights.find({ NGAY: req.query.date, HANG: req.query.rate }).where('SOLUONGGHE').gt(req.query.passengers).exec(
+            } else if (Object.keys(req.query).length === 5) { //....url?start=''&end=''&date=''&passengers=''&rate=''
+                flights.find({ NOIDI : req.query.start, NOIDEN : req.query.end, NGAY: req.query.date, HANG: req.query.rate }).where('SOLUONGGHE').gt(req.query.passengers).exec(
                     function(err, flights) {
                         if (!err && flights.length !== 0) {
                             res.status(200).json(flights);
