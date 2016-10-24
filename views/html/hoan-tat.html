@@ -1,0 +1,38 @@
+<div class="row center">
+	<h4>Thông Tin Thanh Toán</h4>
+</div>
+<div class="row">
+	<div class="col m4 s12 left">
+		<h5>Khách Hàng</h5>
+		<div ng-repeat="customer in infor.customer">
+			<p><strong>{{customer.DANHXUNG}}</strong> {{customer.TEN}} {{customer.HO}}</p>
+		</div>
+	</div>
+	<div class="col m8 s12">
+		<h5>Chuyến Bay</h5>
+		<table>
+			<thead>
+				<th>Nơi đi</th>
+				<th>Nơi đến</th>
+				<th>Mã chuyến</th>
+				<th>Giá vé</th>
+				<th>Ngày đi</th>
+				<th>Khởi hành</th>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{resultFlights[infor.selectedFlight].NOIDI}}</td>
+					<td>{{resultFlights[infor.selectedFlight].NOIDEN}}</td>
+					<td>{{resultFlights[infor.selectedFlight].MA}}</td>
+					<td>{{resultFlights[infor.selectedFlight].GIABAN}}</td>
+					<td>{{resultFlights[infor.selectedFlight].NGAY}}</td>
+					<td>{{resultFlights[infor.selectedFlight].GIO}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="row center">
+	<a href="" class="btn" ng-click="complete()">Thanh Toán</a>
+</div>

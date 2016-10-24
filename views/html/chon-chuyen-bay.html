@@ -20,10 +20,9 @@
 </div>
 <div class="switch col m2 s12 input-field">
 	<label>
-		Một Chiều
+		Khứ hồi
 		<input type="checkbox" ng-model="infor.isReturn">
 		<span class="lever"></span>
-		Khứ Hồi
 	</label>
 </div>
 <div class="input-field col m2 s12">
@@ -44,7 +43,7 @@
 	<label>Hạng Ghế</label>
 </div>
 
-<div class="row">
+<div class="row" ng-show="resultFlights.length > 0">
 	<table class="striped">
 		<thead>
 			<th>Chọn</th>
@@ -75,6 +74,6 @@
 </div>
 
 <div class="row col s12 right">
-	<a href="" class="btn" ng-click="search()">Tìm Kiếm</a>
-	<a href="" class="btn" ng-click="nextStep(2)">Tiếp Tục</a>
+	<a href="" class="btn" ng-click="search()" ng-class="{'disabled' : !validateBeforeSearch()}"	>Tìm Kiếm</a>
+	<a href="" class="btn" ng-click="nextStep(2)"  ng-class="{'disabled' : !validateStep1()}"	>Tiếp Tục</a>
 </div>
