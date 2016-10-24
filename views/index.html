@@ -16,9 +16,11 @@
 				<ul class="tabs">
 					<li class="tab col s3"><a  href="#test1">Thông Tin Hành Khách</a></li>
 					<li class="tab col s3" ng-class="{'disabled' : step < 2 }"><a class="active" href="#test2">Chọn Chuyến Bay</a></li>
-					<li class="tab col s3" ng-class="{'disabled' : step < 3 }"><a href="#test3">Chọn Ghế</a></li>
 					<li class="tab col s3" ng-class="{'disabled' : step < 4 }"><a href="#test4">Hoàn Tất Thanh Toán</a></li>
 				</ul>
+				<div class="progress" ng-show='isWait'>
+					<div class="indeterminate"></div>
+				</div>
 			</div>
 			<div id="test1" class="col s12">
 				<ng-include src="'./html/nhap-thong-tin.html'" scope="" onload="initInput()"></ng-include>
@@ -26,7 +28,6 @@
 			<div id="test2" class="col s12">
 				<ng-include src="'./html/chon-chuyen-bay.html'" scope="" onload="initInput()"></ng-include>
 			</div>
-			<div id="test3" class="col s12">Chọn Ghế</div>
 			<div id="test4" class="col s12">Hoàn Tất Thanh Toán</div>
 		</div>
 	</div>

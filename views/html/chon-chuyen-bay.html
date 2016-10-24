@@ -1,1 +1,7 @@
-Chon chuyen báy
+<div class="input-field col m2 s12">
+	<select  ng-model="infor.customer.START">
+		<option value="" disabled selected>Chọn Nơi Đi</option>
+		<option ng-repeat="airport in allAirports" value="airport">{{airport}}</option>
+	</select>
+	<label>Nơi đi</label>
+</div>
