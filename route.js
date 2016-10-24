@@ -1,8 +1,8 @@
 "use strict";
 
-let route = require('express').Router();
-let flightController = require('./controllers/flightController');
-let bookingController = require('./controllers/bookingController');
+var route = require('express').Router();
+var flightController = require('./controllers/flightController');
+var bookingController = require('./controllers/bookingController');
 
 route.get('/api/flights' , flightController.getFlights);
 route.post('/api/booking' , bookingController.booking);

@@ -1,8 +1,8 @@
 "use strict";
 
-let flights = require('../models/flights');
+var flights = require('../models/flights');
 
-let flightController = {
+var flightController = {
     getFlights: function(req, res) {
         if (Object.keys(req.query).length === 0) {
             flights.find({}).distinct('NOIDI', function(err, flight) {
@@ -40,7 +40,7 @@ let flightController = {
                     });
             }
         }
-    },
-}
+    }
+};
 
 module.exports = flightController;
