@@ -47,17 +47,24 @@
 </div>
 
 <div class="row">
-	<table class="stripped responsive">
+	<table class="striped">
 		<thead>
+			<th>Chọn</th>
 			<th>Nơi đi</th>
 			<th>Nơi đến</th>
 			<th>Mã chuyến</th>
 			<th>Giá vé</th>
 			<th>Ngày đi</th>
-			<th>Khởi hàng</th>
+			<th>Khởi hành</th>
 		</thead>
 		<tbody>
 			<tr ng-repeat="flight in resultFlights">
+				<td>
+					<p>
+						<input name="flightGroup" type="radio" id="{{$index}}" value="{{$index}}" ng-model="infor.selectedFlight"/>
+						<label for="{{$index}}">Chọn</label>
+					</p>
+				</td>
 				<td>{{flight.NOIDI}}</td>
 				<td>{{flight.NOIDEN}}</td>
 				<td>{{flight.MA}}</td>

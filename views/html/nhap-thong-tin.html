@@ -1,4 +1,4 @@
-<div class="row col s12" ng-repeat="item in result track by $index">
+<div class="row col s12" ng-repeat="item in getPassengerNumber() track by $index">
 	<h5>Hành Khách {{$index + 1}}</h5>
 	<div class="input-field col m2 s12">
 		<select  ng-model="infor.customer[$index].DANHXUNG">

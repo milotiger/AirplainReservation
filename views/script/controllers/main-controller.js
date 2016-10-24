@@ -9,10 +9,10 @@
 		sc.infor.customer = [];
 		sc.infor.detail = {};
 		sc.infor.isReturn = false;
+		sc.infor.selectedFlight = 0;
 
 		sc.allAirports = [];
 
-		sc.result = [1,2];
 		sc.resultFlights = [];
 
 		sc.initInput = function initInput() {
@@ -54,6 +54,10 @@
 				unWait();
 				sc.resultFlights = data;
 			})
+		}
+
+		sc.getPassengerNumber = function getPassengerNumber() {
+			return new Array(sc.infor.detail.seats);
 		}
 
 		function Wait() {
