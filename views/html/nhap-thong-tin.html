@@ -1,19 +1,23 @@
-<div class="input-field col m2 s12">
-	<select  ng-model="infor.customer.DANHXUNG">
-		<option value="" disabled selected>Chọn Danh Xưng</option>
-		<option value="MR">Ông</option>
-		<option value="MS">Bà</option>
-	</select>
-	<label>Danh Xưng</label>
+<div class="row col s12" ng-repeat="item in result track by $index">
+	<h5>Hành Khách {{$index + 1}}</h5>
+	<div class="input-field col m2 s12">
+		<select  ng-model="infor.customer[$index].DANHXUNG">
+			<option value="" disabled selected>Chọn Danh Xưng</option>
+			<option value="MR">Ông</option>
+			<option value="MS">Bà</option>
+		</select>
+		<label>Danh Xưng</label>
+	</div>
+	<div class="input-field col m3 s12">
+		<input id="last_name" type="text" class="validate" ng-model="infor.customer[$index].HO">
+		<label for="last_name">Họ</label>
+	</div>
+	<div class="input-field col m7 s12">
+		<input id="first_name" type="text" class="validate" ng-model="infor.customer[$index].TEN">
+		<label for="first_name">Chữ Lót và Tên</label>
+	</div>
 </div>
-<div class="input-field col m3 s12">
-	<input id="last_name" type="text" class="validate" ng-model="infor.customer.HO">
-	<label for="last_name">Họ</label>
-</div>
-<div class="input-field col m7 s12">
-	<input id="first_name" type="text" class="validate" ng-model="infor.customer.TEN">
-	<label for="first_name">Chữ Lót và Tên</label>
-</div>
+
 <div class="row right">
 	<a href="" class="btn">Tiếp Tục</a>
 </div>

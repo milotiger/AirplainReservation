@@ -1,13 +1,36 @@
-<div class="input-field col m3 s12">
+<div class="input-field col m6 s12">
 	<select  ng-model="infor.detail.startAirAport">
 		<option value="" disabled selected>Chọn Nơi Đi</option>
 		<option ng-repeat="airport in allAirports" value="{{airport}}">{{airport}}</option>
 	</select>
 	<label>Nơi đi</label>
 </div>
-<div class="input-field col m3 s12">
+<div class="input-field col m6 s12">
+	<select  ng-model="infor.detail.desAirAport">
+		<option value="" disabled selected>Chọn Nơi Đến</option>
+		<option ng-repeat="airport in allAirports" value="{{airport}}">{{airport}}</option>
+	</select>
+	<label>Nơi đến</label>
+</div>
+
+
+
+
+<div class="input-field col m2 s12">
 	<input type="text" class="datepicker" id="startDate" ng-model="infor.detail.startDate">
 	<label for="startDate">Ngày đi</label>
+</div>
+<div class="switch col m2 s12 input-field">
+	<label>
+		Một Chiều
+		<input type="checkbox" ng-model="infor.isReturn">
+		<span class="lever"></span>
+		Khứ Hồi
+	</label>
+</div>
+<div class="input-field col m2 s12">
+	<input type="text" class="datepicker" id="returnDate" ng-model="infor.detail.returnDate" ng-disabled="!infor.isReturn">
+	<label for="returnDate">Ngày đến</label>
 </div>
 <div class="input-field col m3 s12">
 	<input id="seats" type="number" class="validate" ng-model="infor.detail.seats">
@@ -23,7 +46,30 @@
 	<label>Hạng Ghế</label>
 </div>
 
+<div class="row">
+	<table class="stripped responsive">
+		<thead>
+			<th>Nơi đi</th>
+			<th>Nơi đến</th>
+			<th>Mã chuyến</th>
+			<th>Giá vé</th>
+			<th>Ngày đi</th>
+			<th>Khởi hàng</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="flight in resultFlights">
+				<td>{{flight.NOIDI}}</td>
+				<td>{{flight.NOIDEN}}</td>
+				<td>{{flight.MA}}</td>
+				<td>{{flight.GIABAN}}</td>
+				<td>{{flight.NGAY}}</td>
+				<td>{{flight.GIO}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
 <div class="row col s12 right">
-	<a href="" class="btn">Tìm Kiếm</a>
+	<a href="" class="btn" ng-click="search()">Tìm Kiếm</a>
 	<a href="" class="btn">Tiếp Tục</a>
 </div>

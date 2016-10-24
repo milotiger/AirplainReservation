@@ -6,10 +6,14 @@
 		sc.isWait = false;
 
 		sc.infor = {};
-		sc.infor.customer = {};
+		sc.infor.customer = [];
 		sc.infor.detail = {};
+		sc.infor.isReturn = false;
 
 		sc.allAirports = [];
+
+		sc.result = [1,2];
+		sc.resultFlights = [];
 
 		sc.initInput = function initInput() {
 			uiService.initInput();
@@ -35,6 +39,22 @@
 		}
 
 		sc.loadAllAirports();
+
+		sc.search = function search() {
+			Wait()
+			$http.get($rootScope.baseApi + "/flights", 
+				{params: {
+					rate: sc.infor.detail.class,
+					passengers: sc.infor.detail.seats,
+					date: mainService.convertDate(sc.infor.detail.startDate)
+				}
+			})
+			.success(function (data) {
+				console.log(data);
+				unWait();
+				sc.resultFlights = data;
+			})
+		}
 
 		function Wait() {
 			sc.Wait = true;
