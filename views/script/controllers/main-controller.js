@@ -33,7 +33,7 @@
 			.success(function (data) {
 				unWait();
 				sc.allAirports = data;
-				console.log(data);
+				// console.log(data);
 				sc.initInputDelay();
 			})
 		}
@@ -52,7 +52,7 @@
 				}
 			})
 			.then(function (data) {
-				console.log(data);
+				// console.log(data);
 				unWait();
 				sc.resultFlights = data.data;
 			}, function (error) {
@@ -72,7 +72,7 @@
 			console.log(postData);
 			$http.post($rootScope.baseApi + "/booking", postData)
 			.success(function (data) {
-				console.log(data);
+				// console.log(data);
 				sc.infor.detail.code = data.MADATCHO;
 				swal('Thành Công', 'Mã đặt chỗ của bạn là ' + data.MADATCHO, 'success');
 				sc.nextStep(3);
@@ -113,6 +113,7 @@
 		}
 
 		sc.complete = function complete() {
+			Wait();
 			var postData = {};
 			var flight = sc.resultFlights[sc.infor.selectedFlight];
 			postData.MADATCHO = sc.infor.detail.code;
@@ -123,11 +124,13 @@
 			postData.CHUYENBAY[0].HANG = flight.HANG;
 			postData.CHUYENBAY[0].MUCGIA = flight.MUCGIA;
 
-			console.log(postData);
-			
+			// console.log(postData);
+
 			$http.post($rootScope.baseApi + "/booking/completed", postData)
 			.success(function (data) {
+				unWait();
 				console.log(data);
+				swal('Thành Công', 'Bạn đã đặt chỗ thành công\nMã đặt chỗ của bạn là ' + sc.infor.detail.code, 'success');
 			})
 		}
 
