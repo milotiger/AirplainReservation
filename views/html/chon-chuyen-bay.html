@@ -1,7 +1,29 @@
-<div class="input-field col m2 s12">
-	<select  ng-model="infor.customer.START">
+<div class="input-field col m3 s12">
+	<select  ng-model="infor.detail.startAirAport">
 		<option value="" disabled selected>Chọn Nơi Đi</option>
-		<option ng-repeat="airport in allAirports" value="airport">{{airport}}</option>
+		<option ng-repeat="airport in allAirports" value="{{airport}}">{{airport}}</option>
 	</select>
 	<label>Nơi đi</label>
+</div>
+<div class="input-field col m3 s12">
+	<input type="text" class="datepicker" id="startDate" ng-model="infor.detail.startDate">
+	<label for="startDate">Ngày đi</label>
+</div>
+<div class="input-field col m3 s12">
+	<input id="seats" type="number" class="validate" ng-model="infor.detail.seats">
+	<label for="seats">Số Lượng Ghế</label>
+</div>
+
+<div class="input-field col m3 s12">
+	<select  ng-model="infor.detail.class">
+		<option value="" disabled selected>Chọn Hạng Ghế</option>
+		<option value="Y">Phổ Thông</option>
+		<option value="C">Thương Gia</option>
+	</select>
+	<label>Hạng Ghế</label>
+</div>
+
+<div class="row col s12 right">
+	<a href="" class="btn">Tìm Kiếm</a>
+	<a href="" class="btn">Tiếp Tục</a>
 </div>

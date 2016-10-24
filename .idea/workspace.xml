@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d21d776b-fa5a-4d4d-ad82-27413b150a11" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/html/chon-chuyen-bay.html" afterPath="$PROJECT_DIR$/views/html/chon-chuyen-bay.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/index.html" afterPath="$PROJECT_DIR$/views/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/script/controllers/main-controller.js" afterPath="$PROJECT_DIR$/views/script/controllers/main-controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/script/configs/config.js" afterPath="$PROJECT_DIR$/views/script/configs/config.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/script/factories/ui-service.js" afterPath="$PROJECT_DIR$/views/script/factories/ui-service.js" />
     </list>
     <ignored path="AirplainReservation.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -135,15 +136,15 @@
       <option name="presentableId" value="Default" />
       <updated>1477206540153</updated>
       <workItem from="1477206542872" duration="1887000" />
-      <workItem from="1477278051744" duration="2494000" />
+      <workItem from="1477278051744" duration="2956000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4381000" />
+    <option name="totallyTimeSpent" value="4843000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />

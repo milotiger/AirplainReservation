@@ -14,8 +14,8 @@
 		<div class="row">
 			<div class="col s12">
 				<ul class="tabs">
-					<li class="tab col s3"><a  href="#test1">Thông Tin Hành Khách</a></li>
 					<li class="tab col s3" ng-class="{'disabled' : step < 2 }"><a class="active" href="#test2">Chọn Chuyến Bay</a></li>
+					<li class="tab col s3"><a  href="#test1">Thông Tin Hành Khách</a></li>
 					<li class="tab col s3" ng-class="{'disabled' : step < 4 }"><a href="#test4">Hoàn Tất Thanh Toán</a></li>
 				</ul>
 				<div class="progress" ng-show='isWait'>
@@ -36,6 +36,7 @@
 	<script type="text/javascript" src="./bower_components/materialize/dist/js/materialize.js"></script>
 	<script type="text/javascript" src="./bower_components/angular/angular.js"></script>
 	<script type="text/javascript" src="./script/configs/config.js"></script>
+	<script type="text/javascript" src="./script/factories/mainService.js"></script>
 	<script type="text/javascript" src="./script/factories/ui-service.js"></script>
 	<script type="text/javascript" src="./script/controllers/main-controller.js"></script>
 </body>
