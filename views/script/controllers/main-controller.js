@@ -46,7 +46,9 @@
 				{params: {
 					rate: sc.infor.detail.class,
 					passengers: sc.infor.detail.seats,
-					date: mainService.convertDate(sc.infor.detail.startDate)
+					date: mainService.convertDate(sc.infor.detail.startDate),
+					start: sc.infor.detail.startAirAport,
+					end: sc.infor.detail.desAirAport
 				}
 			})
 			.then(function (data) {
@@ -62,6 +64,16 @@
 
 		sc.getPassengerNumber = function getPassengerNumber() {
 			return new Array(sc.infor.detail.seats);
+		}
+
+		sc.nextStep = function nextStep(step) {
+			var id = "tab" + step;
+			sc.step = step;
+			sc.$evalAsync();
+			$(document).ready(function(){
+				$('ul.tabs').tabs('select_tab', id);
+			});
+			sc.initInputDelay();
 		}
 
 		function Wait() {

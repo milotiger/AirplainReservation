@@ -15,21 +15,21 @@
 		<div class="row">
 			<div class="col s12">
 				<ul class="tabs">
-					<li class="tab col s3"><a class="active" href="#test2">Chọn Chuyến Bay</a></li>
-					<li class="tab col s3" ng-class="{'disabled' : step != 2 }"><a  href="#test1" ng-click="initInputDelay()">Thông Tin Hành Khách</a></li>
-					<li class="tab col s3" ng-class="{'disabled' : step != 3 }"><a href="#test4">Hoàn Tất Thanh Toán</a></li>
+					<li class="tab col s3" ng-class="{'disabled' : step != 1 }"><a class="active" href="#tab1">Chọn Chuyến Bay</a></li>
+					<li class="tab col s3" ng-class="{'disabled' : step != 2 }"><a  href="#tab2" ng-click="initInputDelay()">Thông Tin Hành Khách</a></li>
+					<li class="tab col s3" ng-class="{'disabled' : step != 3 }"><a href="#tab3">Hoàn Tất Thanh Toán</a></li>
 				</ul>
 				<div class="progress" ng-show='isWait'>
 					<div class="indeterminate"></div>
 				</div>
 			</div>
-			<div id="test1" class="col s12">
+			<div id="tab2" class="col s12">
 				<ng-include src="'./html/nhap-thong-tin.html'" scope="" onload="initInput()"></ng-include>
 			</div>
-			<div id="test2" class="col s12">
+			<div id="tab1" class="col s12">
 				<ng-include src="'./html/chon-chuyen-bay.html'" scope="" onload="initInput()"></ng-include>
 			</div>
-			<div id="test4" class="col s12">Hoàn Tất Thanh Toán</div>
+			<div id="tab3" class="col s12">Hoàn Tất Thanh Toán</div>
 		</div>
 	</div>
 	
