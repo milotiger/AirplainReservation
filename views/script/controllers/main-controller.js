@@ -2,7 +2,7 @@
 	var app = angular.module('mainApp');
 	app.controller('mainCtr', function($scope, $rootScope, mainService, uiService, $http, $timeout){
 		window.sc = $scope;
-		sc.step = 4;
+		sc.step = 1;
 		sc.isWait = false;
 
 		sc.infor = {};
@@ -49,10 +49,14 @@
 					date: mainService.convertDate(sc.infor.detail.startDate)
 				}
 			})
-			.success(function (data) {
+			.then(function (data) {
 				console.log(data);
 				unWait();
-				sc.resultFlights = data;
+				sc.resultFlights = data.data;
+			}, function (error) {
+				unWait();
+				swal('Không tìm thấy!', 'Không tìm thấy chuyến bay phù hợp!', 'error');
+				sc.resultFlights = {};
 			})
 		}
 
