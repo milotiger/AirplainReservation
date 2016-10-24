@@ -5,9 +5,6 @@ var route = require('./route');
 
 var app = express();
 
-app.use(bodyParser.urlencoded({ extended : true }));
-app.use(bodyParser.json());
-app.use('/', route);
 
 //CORS middleware
 var allowCrossDomain = function(req, res, next) {
@@ -19,6 +16,11 @@ var allowCrossDomain = function(req, res, next) {
 };
 
 app.use(allowCrossDomain);
+
+app.use(bodyParser.urlencoded({ extended : true }));
+app.use(bodyParser.json());
+app.use('/', route);
+
 
 app.use(express.static(__dirname + '/views'));
 
