@@ -27,7 +27,7 @@
 				'GIABAN' : $scope.flight.giaban
 			};
 
-			$http.post('http://localhost:3000/api/flights', $scope.flightToAdd).success( function(response) {
+			$http.post('../api/flights', $scope.flightToAdd).success( function(response) {
 				$timeout(function() {
 					$scope.listFlights.push($scope.flightToAdd);
 				})
