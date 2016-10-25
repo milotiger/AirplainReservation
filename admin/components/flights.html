@@ -1,0 +1,48 @@
+<div class="row">
+	<div class="col-xs-12">
+		<div class="box">
+			<div class="box-header">
+				<h3 class="box-title">Flights</h3>
+
+				<div class="box-tools">
+					<div class="input-group input-group-sm" style="width: 150px;">
+						<input type="text" name="table_search" class="form-control pull-right" placeholder="Search"/>
+
+						<div class="input-group-btn">
+							<button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /.box-header -->
+			<div class="box-body table-responsive no-padding">
+				<table class="table table-hover">
+					<tr>
+						<th>ID</th>
+						<th>NOIDI</th>
+						<th>NOIDEN</th>
+						<th>NGAY</th>
+						<th>GIO</th>
+						<th>HANG</th>
+						<th>MUCGIA</th>
+						<th>SOLUONGGHE</th>
+						<th>GIAVE</th>
+					</tr>
+					<tr ng-repeat="flight in listFlights">
+						<td>{{flight.MA}}</td>
+						<td>{{flight.NOIDI}}</td>
+						<td>{{flight.NOIDEN}}</td>
+						<td>{{flight.NGAY}}</td>
+						<td>{{flight.GIO}}</td>
+						<td>{{flight.HANG}}</td>
+						<td>{{flight.MUCGIA}}</td>
+						<td>{{flight.SOLUONGGHE}}</td>
+						<td>{{flight.GIABAN}}</td>
+					</tr>
+				</table>
+			</div>
+			<!-- /.box-body -->
+		</div>
+		<!-- /.box -->
+	</div>
+</div>

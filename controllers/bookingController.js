@@ -108,7 +108,7 @@ let bookingController = {
     			let bookingInfo = {};
     			bookingInfo.THONGTINDATCHO = resultBooking;
     			passengers.find({ 'MADATCHO' : resultBooking.MA }, '-_id -__v -MADATCHO', function( err, resultPassengers ) {
-    				if( err ) err = true;
+    				if( err ) res.status(400).json({'error' : true});
     				else {
     					bookingInfo.HANHKHACH = resultPassengers;
     					flightDetails.find({ 'MADATCHO' : resultBooking.MA }, '-_id -__v -MADATCHO', function( err, flightDetails ) {

@@ -3,6 +3,13 @@
 var flights = require('../models/flights');
 
 var flightController = {
+    getAllFlights : function( req, res ) {
+        flights.find({}, '-_id', function( err, allflights ) {
+            if( err ) res.status(400).json({'error' : true, 'messages' : 'Cant load all flights'});
+            else res.status(200).json(allflights);
+        })
+    },
+
     getFlights: function(req, res) {
         if (Object.keys(req.query).length === 0) {
             flights.find({}).distinct('NOIDI', function(err, flight) {

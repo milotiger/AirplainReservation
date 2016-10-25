@@ -4,6 +4,7 @@ var route = require('express').Router();
 var flightController = require('./controllers/flightController');
 var bookingController = require('./controllers/bookingController');
 
+route.get('/api/all-flights',flightController.getAllFlights);
 route.get('/api/flights' , flightController.getFlights);
 route.post('/api/booking' , bookingController.booking);
 route.post('/api/booking/completed' , bookingController.completedBooking);
