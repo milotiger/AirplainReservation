@@ -42,6 +42,6 @@ mongoose.connect(uristring, function( err,res ) {
 	}
 });
 
-app.listen(3000);
-console.log('Server Started!');
-
+var listener = app.listen(process.env.PORT || 3000, function(){
+	console.log('Listening on port ' + listener.address().port); //Listening on port 3000
+});

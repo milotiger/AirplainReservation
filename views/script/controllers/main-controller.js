@@ -169,7 +169,9 @@
 			.success(function (data) {
 				unWait();
 				console.log(data);
-				swal('Thành Công', 'Bạn đã đặt chỗ thành công\nMã đặt chỗ của bạn là ' + sc.infor.detail.code, 'success');
+				if (data.messages == "Already Completed")
+					swal('Đã thanh toán', 'Bạn đã thực hiện thanh toán rồi!', 'warning');
+				else swal('Thành Công', 'Bạn đã đặt chỗ thành công\nMã đặt chỗ của bạn là ' + sc.infor.detail.code, 'success');
 			})
 		}
 
