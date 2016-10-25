@@ -47,6 +47,25 @@ var flightController = {
                     });
             }
         }
+    },
+
+    addFlight : function( req , res ) {
+        let flight = new flights({
+            'MA' : req.body.MA,
+            'NOIDI' : req.body.NOIDI,
+            'NOIDEN' : req.body.NOIDEN,
+            'NGAY' : req.body.NGAY,
+            'GIO' : req.body.GIO,
+            'HANG' : req.body.HANG,
+            'MUCGIA' : req.body.MUCGIA,
+            'SOLUONGGHE' : req.body.SOLUONGGHE,
+            'GIABAN' : req.body.GIABAN
+        });
+
+        flight.save(function ( err ) {
+            if( !err ) res.status(200).json({'error' : false, 'messages' : 'completed'});
+            else res.status(400).json({'error' : true});
+        })
     }
 };
 

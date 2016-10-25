@@ -19,10 +19,15 @@ app.use(allowCrossDomain);
 
 app.use(bodyParser.urlencoded({ extended : true }));
 app.use(bodyParser.json());
+
 app.use('/', route);
 
+app.get('/admin', function( req, res ) {
+	res.redirect('admin.html');
+})
 
 app.use(express.static(__dirname + '/views'));
+app.use(express.static(__dirname + '/admin'));
 
 var uristring = process.env.MONGOLAB_URI || process.env.MONGOHQ_URL ||
 'mongodb://hmtri1011:Hoangminhtri1011@ds021356.mlab.com:21356/dagk';

@@ -9,7 +9,7 @@
 			url : '/',
 			views : {
 				'subview' : {
-					templateUrl : './components/home.html',
+					templateUrl : './components/home/home.html',
 				}
 			}
 		})
@@ -18,7 +18,7 @@
 			url : 'flights',
 			views : {
 				'subview@' : {
-					templateUrl : './components/flights.html',
+					templateUrl : './components/flights/flights.html',
 					controller : 'flightController'
 				}
 			}
@@ -37,7 +37,7 @@
 			url : 'flight-details',
 			views : {
 				'subview@' : {
-					templateUrl : './components/flight-detail.html',
+					templateUrl : './components/flight-detail/flight-detail.html',
 				}
 			}
 		})
@@ -46,7 +46,8 @@
 			url : 'passenger',
 			views : {
 				'subview@' : {
-					templateUrl : './components/passenger.html',
+					templateUrl : './components/passenger/passenger.html',
+					controller : 'passengerController'
 				}
 			}
 		})

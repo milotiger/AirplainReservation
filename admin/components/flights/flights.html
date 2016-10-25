@@ -1,0 +1,118 @@
+<div class="box dataTables_wrapper no-footer">
+    <div class="box-header">
+        <h3 class="box-title">Flights Collection</h3>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body">
+        <table class="row-border hover">
+            <thead>
+                <tr>
+                    <th>
+                        <div class="form-group add-form">
+                            <label>
+                                <input class="form-control" type="text" name="id" ng-model="flight.ma" value="" placeholder="Mã Đặt Chỗ" />
+                            </label>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group add-form">
+                            <label>
+                                <input type="text" class="form-control" name="noidi" ng-model="flight.noidi" value="" placeholder="Nơi Đi" />
+                            </label>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group add-form">
+                            <label>
+                                <input type="text" class="form-control" name="noiden" ng-model="flight.noiden" value="" placeholder="Nơi Đến" />
+                            </label>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group add-form">
+                            <label>
+                                <input type="text" class="form-control" name="ngay" ng-model="flight.ngay" value="" placeholder="Ngày" />
+                            </label>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group add-form">
+                            <label>
+                                <input type="text" class="form-control" name="gio" ng-model="flight.gio" value="" placeholder="Giờ"/>
+                            </label>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group add-form">
+                            <label>
+                                <input type="text" class="form-control" name="hang" ng-model="flight.hang" value="" placeholder="Hạng" />
+                            </label>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group add-form">
+                            <label>
+                                <input type="text" class="form-control" name="mucgia" ng-model="flight.mucgia" value="" placeholder="Mức Giá"/>
+                            </label>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group add-form">
+                            <label>
+                                <input type="number" class="form-control" name="soluongghe" ng-model="flight.soluongghe" value="" placeholder="Số Lượng Ghế" />
+                            </label>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group add-form">
+                            <label>
+                                <input type="number" class="form-control" name="giaban" ng-model="flight.giaban" value="" placeholder="Giá Bán">
+                            </label>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group add-form">
+                            <button class="btn btn-success" ng-click="addFlight()" style="width: 30px; height: 30px; padding: 0; margin-bottom: 10px; margin-left: 5px"><i class="fa fa-plus"></i></button>
+                        </div>
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <form class="form-inline">
+            <table datatable="ng" class="row-border hover">
+                <thead>
+                    <tr>
+                        <th>MÃ</th>
+                        <th>NƠI ĐI</th>
+                        <th>NƠI ĐẾN</th>
+                        <th>NGÀY</th>
+                        <th>GIỜ</th>
+                        <th>HẠNG</th>
+                        <th>MỨC GIÁ</th>
+                        <th>SỐ LƯỢNG GHẾ</th>
+                        <th>GIÁ BÁN</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="flight in listFlights">
+                        <td>{{flight.MA}}</td>
+                        <td>{{flight.NOIDI}}</td>
+                        <td>{{flight.NOIDEN}}</td>
+                        <td>{{flight.NGAY}}</td>
+                        <td>{{flight.GIO}}</td>
+                        <td>{{flight.HANG}}</td>
+                        <td>{{flight.MUCGIA}}</td>
+                        <td>{{flight.SOLUONGGHE}}</td>
+                        <td>{{flight.GIABAN}}</td>
+                        <td>
+                            <button type="button" class="btn btn-warning"><i class="fa fa-edit"></i></button>
+                            <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+    <!-- /.box-body -->
+</div>
