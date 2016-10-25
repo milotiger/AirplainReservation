@@ -3,17 +3,19 @@
 	app.controller('mainCtr', function($scope, $rootScope, mainService, uiService, $http, $timeout){
 		window.sc = $scope;
 		sc.step = 1;
-		sc.isWait = false;
+		sc.isWaiting = false;
 
 		sc.infor = {};
 		sc.infor.customer = [];
 		sc.infor.detail = {};
 		sc.infor.isReturn = false;
 		sc.infor.selectedFlight = 0;
+		sc.infor.selectedReturnFlight = 0;
 
 		sc.allAirports = [];
 
 		sc.resultFlights = [];
+		sc.returnFlights = [];
 
 		sc.initInput = function initInput() {
 			uiService.initInput();
@@ -40,7 +42,8 @@
 
 		sc.loadAllAirports();
 
-		sc.search = function search() {
+		sc.searchF = function searchF() {
+			console.log("milo")
 			Wait()
 			$http.get($rootScope.baseApi + "/flights", 
 				{params: {
@@ -52,13 +55,32 @@
 				}
 			})
 			.then(function (data) {
-				// console.log(data);
 				unWait();
 				sc.resultFlights = data.data;
+				$http.get($rootScope.baseApi + "/flights", 
+					{params: {
+						rate: sc.infor.detail.class,
+						passengers: sc.infor.detail.seats,
+						date: mainService.convertDate(sc.infor.detail.returnDate),
+						start: sc.infor.detail.desAirAport,
+						end: sc.infor.detail.startAirAport
+					}
+				})
+				.then(function (dataReturn) {
+					console.log(data);
+					unWait();
+					sc.returnFlights = dataReturn.data;
+
+				}, function (error) {
+					unWait();
+					swal('Không tìm thấy!', 'Không tìm thấy chuyến bay phù hợp!', 'error');
+					sc.returnFlights = [];
+				})
+
 			}, function (error) {
 				unWait();
 				swal('Không tìm thấy!', 'Không tìm thấy chuyến bay phù hợp!', 'error');
-				sc.resultFlights = {};
+				sc.resultFlights = [];
 			})
 		}
 
@@ -123,6 +145,7 @@
 			postData.CHUYENBAY[0].NGAY = flight.NGAY;
 			postData.CHUYENBAY[0].HANG = flight.HANG;
 			postData.CHUYENBAY[0].MUCGIA = flight.MUCGIA;
+			postData.CHUYENBAY[0].GIO = flight.GIO;
 
 			// console.log(postData);
 
@@ -134,13 +157,30 @@
 			})
 		}
 
+		sc.search = {};
+
+		sc.searchCode = function searchCode() {
+			// if (!sc.search.code || sc.search.code == '')
+			// 	return;
+			Wait();
+			$http.get($rootScope.baseApi + "/booking/" + sc.search.code)
+			.then(function (data) {
+				sc.search.result = data.data;
+				console.log(data);
+				unWait();
+			}, function (data) {
+				swal('Không Tìm Thấy', 'Mã đặt chỗ không tồn tại!', 'warning');
+				unWait();
+			})
+		}
+
 		function Wait() {
-			sc.Wait = true;
+			sc.isWaiting = true;
 			sc.$evalAsync();
 		}
 
 		function unWait() {
-			sc.Wait = false;
+			sc.isWaiting = false;
 			sc.$evalAsync();
 		}
 	});

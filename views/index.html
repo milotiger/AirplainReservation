@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="./bower_components/materialize/dist/css/materialize.css">
 	<link rel="stylesheet" type="text/css" href="./bower_components/sweetalert/dist/sweetalert.css">
 	<link rel="stylesheet" href="./style/style.css">
+	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 </head>
 <body ng-app="mainApp" ng-controller="mainCtr">
 	<div class="header">
@@ -19,8 +20,8 @@
 					<li class="tab col s3" ng-class="{'disabled' : step != 2 }"><a  href="#tab2" ng-click="initInputDelay()">Thông Tin Hành Khách</a></li>
 					<li class="tab col s3" ng-class="{'disabled' : step != 3 }"><a href="#tab3">Hoàn Tất Thanh Toán</a></li>
 					<li class="tab col s3"><a style="color: #00796B; font-weight: 900;" href="#tab4">Tra Cứu Thông Tin</a></li>
-				</ul>
-				<div class="progress" ng-show='isWait'>
+				</ul>		
+				<div class="progress" ng-show='isWaiting'>
 					<div class="indeterminate"></div>
 				</div>
 			</div>
@@ -37,9 +38,7 @@
 				<ng-include src="'./html/tra-cuu.html'" scope="" onload="initInput()"></ng-include>
 			</div>
 		</div>
-		<div class="progress" ng-show='isWait'>
-			<div class="indeterminate"></div>
-		</div>
+
 	</div>
 	
 	<script type="text/javascript" src="./bower_components/jquery/dist/jquery.js"></script>
