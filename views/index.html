@@ -9,8 +9,8 @@
 	<META HTTP-EQUIV="PRAGMA" CONTENT="NO-CACHE">
 </head>
 <body ng-app="mainApp" ng-controller="mainCtr">
-	<div class="header">
-		<h1 class="center">Đặt vé máy bay</h1>
+	<div class="header" style="background-color: rgba(0, 121, 107, 0.1); color: wheat;">
+		<h1 class="center" style=" padding-top: 50px; margin-top: 0px; margin-bottom: 0px; padding-bottom: 50px; font-weight: 100" >Đặt vé máy bay</h1>
 	</div>
 	<div class="container">
 		<div class="row">
@@ -25,16 +25,16 @@
 					<div class="indeterminate"></div>
 				</div>
 			</div>
-			<div id="tab2" class="col s12">
+			<div id="tab2" class="col s12" style="background-color: rgba(0, 121, 107, 0.67);     color: wheat;">
 				<ng-include src="'./html/nhap-thong-tin.html'" scope="" onload="initInput()"></ng-include>
 			</div>
-			<div id="tab1" class="col s12">
+			<div id="tab1" class="col s12" style="background-color: rgba(0, 121, 107, 0.67);     color: wheat;">
 				<ng-include src="'./html/chon-chuyen-bay.html'" scope="" onload="initInput()"></ng-include>
 			</div>
-			<div id="tab3" class="col s12">
+			<div id="tab3" class="col s12" style="background-color: rgba(0, 121, 107, 0.67);     color: wheat;">
 				<ng-include src="'./html/hoan-tat.html'" scope="" onload="initInput()"></ng-include>
 			</div>
-			<div id="tab4" class="col s12">
+			<div id="tab4" class="col s12" style="background-color: rgba(0, 121, 107, 0.67);     color: wheat;">
 				<ng-include src="'./html/tra-cuu.html'" scope="" onload="initInput()"></ng-include>
 			</div>
 		</div>

@@ -192,6 +192,29 @@
 			})
 		}
 
+		sc.copyPass =[];
+
+		sc.openChangeModal = function openChangeModal() {
+			sc.copyPass = sc.search.result.HANHKHACH;
+			$('#changeInfor').openModal();
+			sc.initInputDelay();
+		}
+
+		sc.submitChange = function submitChange() {
+			Wait();
+			sc.search.result.HANHKHACH = sc.copyPass;
+			var postData = {};
+			postData.CHUYENBAY = sc.search.result.CHANGBAY;
+			postData.HANHKHACH = sc.copyPass;
+			console.log(postData);
+			$http.put($rootScope.baseApi + "/booking/" + sc.search.code, postData)
+			.success(function (data) {
+				console.log(data);
+				swal('Thành Công', 'Bạn đã cập nhật thành công!', 'success');
+				unWait();
+			});
+		}
+
 		function Wait() {
 			sc.isWaiting = true;
 			sc.$evalAsync();

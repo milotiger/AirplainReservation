@@ -11,6 +11,7 @@
 				selectMonths: true, 
 				selectYears: 15 
 			});
+			$('.modal-trigger').leanModal();
 		}
 		return ui;
 	})
