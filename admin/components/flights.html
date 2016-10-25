@@ -1,112 +1,116 @@
 <div class="box dataTables_wrapper no-footer">
-    <div class="box-header">
-        <h3 class="box-title">Flights Collection</h3>
-    </div>
-    <!-- /.box-header -->
-    <div class="box-body">
-        <table class="row-border hover">
-            <thead>
-                <tr>
-                    <th>
-                        <div class="form-group add-form">
-                            <label>
-                                <input class="form-control" type="text" name="id" ng-model="flight2Add.ma" value="">
-                            </label>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="form-group add-form">
-                            <label>
-                                <input type="text" class="form-control" name="noidi" ng-model="flight2Add.noidi" value="">
-                            </label>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="form-group add-form">
-                            <label>
-                                <input type="text" class="form-control" name="noiden" ng-model="flight2Add.noiden" value="">
-                            </label>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="form-group add-form">
-                            <label>
-                                <input type="text" class="form-control" name="ngay" ng-model="flight2Add.ngay" value="">
-                            </label>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="form-group add-form">
-                            <label>
-                                <input type="text" class="form-control" name="gio" ng-model="flight2Add.gio" value="">
-                            </label>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="form-group add-form">
-                            <label>
-                                <input type="text" class="form-control" name="hang" ng-model="flight2Add.hang" value="">
-                            </label>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="form-group add-form">
-                            <label>
-                                <input type="text" class="form-control" name="mucgia" ng-model="flight2Add.mucgia" value="">
-                            </label>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="form-group add-form">
-                            <label>
-                                <input type="number" class="form-control" name="soluongghe" ng-model="flight2Add.soluongghe" value="">
-                            </label>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="form-group add-form">
-                            <label>
-                                <input type="number" class="form-control" name="giaban" ng-model="flight2Add.giaban" value="">
-                            </label>
-                        </div>
-                    </th>
-                    <th>
-                        <div class="form-group add-form">
-                            <button type="submit" class="btn btn-success" style="width: 30px; height: 30px; padding: 0; margin-bottom: 10px; margin-left: 5px"><i class="fa fa-plus"></i></button>
-                        </div>
-                    </th>
-                </tr>
-            </thead>
-        </table>
-        <form class="form-inline">
-            <table datatable="ng" class="row-border hover">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>NOI DI</th>
-                        <th>NOI DEN</th>
-                        <th>NGAY</th>
-                        <th>GIO</th>
-                        <th>HANG</th>
-                        <th>MUC GIA</th>
-                        <th>SO LUONG GHE</th>
-                        <th>GIA VE</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="flight in listFlights">
-                        <td>{{flight.MA}}</td>
-                        <td>{{flight.NOIDI}}</td>
-                        <td>{{flight.NOIDEN}}</td>
-                        <td>{{flight.NGAY}}</td>
-                        <td>{{flight.GIO}}</td>
-                        <td>{{flight.HANG}}</td>
-                        <td>{{flight.MUCGIA}}</td>
-                        <td>{{flight.SOLUONGGHE}}</td>
-                        <td>{{flight.GIABAN}}</td>
-                    </tr>
-                </tbody>
-            </table>
-    </div>
-    <!-- /.box-body -->
-</div>
+	<div class="box-header">
+		<h3 class="box-title">Flights Collection</h3>
+	</div>
+	<!-- /.box-header -->
+	<div class="box-body">
+		<table class="row-border hover">
+			<thead>
+				<tr>
+					<th>
+						<div class="form-group add-form">
+							<label>
+								<input class="form-control" type="text" name="id" ng-model="flight2Add.ma" value="">
+							</label>
+						</div>
+					</th>
+					<th>
+						<div class="form-group add-form">
+							<label>
+								<input type="text" class="form-control" name="noidi" ng-model="flight2Add.noidi" value="">
+							</label>
+						</div>
+					</th>
+					<th>
+						<div class="form-group add-form">
+							<label>
+								<input type="text" class="form-control" name="noiden" ng-model="flight2Add.noiden" value="">
+							</label>
+						</div>
+					</th>
+					<th>
+						<div class="form-group add-form">
+							<label>
+								<input type="text" class="form-control" name="ngay" ng-model="flight2Add.ngay" value="">
+							</label>
+						</div>
+					</th>
+					<th>
+						<div class="form-group add-form">
+							<label>
+								<input type="text" class="form-control" name="gio" ng-model="flight2Add.gio" value="">
+							</label>
+						</div>
+					</th>
+					<th>
+						<div class="form-group add-form">
+							<label>
+								<input type="text" class="form-control" name="hang" ng-model="flight2Add.hang" value="">
+							</label>
+						</div>
+					</th>
+					<th>
+						<div class="form-group add-form">
+							<label>
+								<input type="text" class="form-control" name="mucgia" ng-model="flight2Add.mucgia" value="">
+							</label>
+						</div>
+					</th>
+					<th>
+						<div class="form-group add-form">
+							<label>
+								<input type="number" class="form-control" name="soluongghe" ng-model="flight2Add.soluongghe" value="">
+							</label>
+						</div>
+					</th>
+					<th>
+						<div class="form-group add-form">
+							<label>
+								<input type="number" class="form-control" name="giaban" ng-model="flight2Add.giaban" value="">
+							</label>
+						</div>
+					</th>
+					<th>
+						<div class="form-group add-form">
+							<button type="submit" class="btn btn-success" style="width: 30px; height: 30px; padding: 0; margin-bottom: 10px; margin-left: 5px"><i class="fa fa-plus"></i></button>
+						</div>
+					</th>
+				</tr>
+			</thead>
+		</table>
+		<form class="form-inline">
+			<table datatable="ng" class="row-border hover">
+				<thead>
+					<tr>
+						<th>ID</th>
+						<th>NOI DI</th>
+						<th>NOI DEN</th>
+						<th>NGAY</th>
+						<th>GIO</th>
+						<th>HANG</th>
+						<th>MUC GIA</th>
+						<th>SO LUONG GHE</th>
+						<th>GIA VE</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="flight in listFlights">
+						<td>{{flight.MA}}</td>
+						<td>{{flight.NOIDI}}</td>
+						<td>{{flight.NOIDEN}}</td>
+						<td>{{flight.NGAY}}</td>
+						<td>{{flight.GIO}}</td>
+						<td>{{flight.HANG}}</td>
+						<td>{{flight.MUCGIA}}</td>
+						<td>{{flight.SOLUONGGHE}}</td>
+						<td>{{flight.GIABAN}}</td>
+						<td>
+							<button type="button" ng-click="editFlight($index)" class="btn btn-warning"><i class="fa fa-edit"></i></button>
+							<button type="button" ng-click="removeFlight($index)" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- /.box-body -->
+	</div>

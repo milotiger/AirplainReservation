@@ -52,53 +52,68 @@ let bookingController = {
     	let Information = req.body.CHUYENBAY;
     	let totalPaid = 0;
 
-        //wait for all async callback completed for using the variable totalPaid
-        let promises = Information.map(function(item) {
-        	return new Promise(function(resolve, reject) {
-        		let FlightDetail = new flightDetails({
-        			MADATCHO: req.body.MADATCHO,
-        			MACHUYENBAY: item.MACHUYENBAY,
-        			NGAY: item.NGAY,
-                    GIO: item.GIO,
-        			HANG: item.HANG,
-        			MUCGIA: item.MUCGIA
-        		});
-
-        		FlightDetail.save(function(err) {
-        			if (!err) {
-        				flights.find({ 'MA': FlightDetail.MACHUYENBAY, 'HANG': FlightDetail.HANG, 'MUCGIA': FlightDetail.MUCGIA }, function(err, flight) {
-        					if (!err) {
-        						passengers.find({ 'MADATCHO': FlightDetail.MADATCHO }).count(function(err, count) {
-        							if (!err) {
-        								flight[0].SOLUONGGHE -= count;
-        								flight[0].save(function( err ) {
-        									if( err ) error = true;
-        								});
-        								totalPaid += count * flight[0].GIABAN;
-        								resolve();
-        							}
-        						})
-        					}
-        				})
-        			} else
-        			error = true;
-        		});
-        	})
+        let promise = new Promise(function( resolve, reject ) {
+            booking.findOne({ 'MA' : req.body.MADATCHO }, function( err, result ) {
+                if( err || result == null ) res.status(400).json({'error' : true });
+                else
+                {
+                    if(result.TRANGTHAI === 1) res.status(200).json({'messages' : 'Already Completed'});
+                    else {
+                        resolve();
+                    }
+                }
+            })
         })
 
-        Promise.all(promises)
-        .then(function() {
-        	if (!error) {
-        		booking.findOneAndUpdate({ 'MA': req.body.MADATCHO }, { 'TONGTIEN': totalPaid, 'TRANGTHAI': 1 }, function(err, result) {
-        			if (!err) {
-        				res.status(200).json({ 'error': false, 'messages': 'Completed Booking' });
-        			}
-        		})
+        promise.then(function() {
+            //wait for all async callback completed for using the variable totalPaid
+            let promises = Information.map(function(item) {
+                return new Promise(function(resolve, reject) {
+                    let FlightDetail = new flightDetails({
+                        MADATCHO: req.body.MADATCHO,
+                        MACHUYENBAY: item.MACHUYENBAY,
+                        NGAY: item.NGAY,
+                        GIO: item.GIO,
+                        HANG: item.HANG,
+                        MUCGIA: item.MUCGIA
+                    });
 
-        	} else
-        	res.status(400).json({ 'error': true, 'messages': 'Something went wrong' });
-        })
-        .catch(console.error);
+                    FlightDetail.save(function(err) {
+                        if (!err) {
+                            flights.find({ 'MA': FlightDetail.MACHUYENBAY, 'HANG': FlightDetail.HANG, 'MUCGIA': FlightDetail.MUCGIA }, function(err, flight) {
+                                if (!err) {
+                                    passengers.find({ 'MADATCHO': FlightDetail.MADATCHO }).count(function(err, count) {
+                                        if (!err) {
+                                            flight[0].SOLUONGGHE -= count;
+                                            flight[0].save(function( err ) {
+                                                if( err ) error = true;
+                                            });
+                                            totalPaid += count * flight[0].GIABAN;
+                                            resolve();
+                                        }
+                                    })
+                                }
+                            })
+                        } else
+                        error = true;
+                    });
+                })
+            })
+
+            Promise.all(promises)
+            .then(function() {
+                if (!error) {
+                    booking.findOneAndUpdate({ 'MA': req.body.MADATCHO }, { 'TONGTIEN': totalPaid, 'TRANGTHAI': 1 }, function(err, result) {
+                        if (!err) {
+                            res.status(200).json({ 'error': false, 'messages': 'Completed Booking' });
+                        }
+                    })
+
+                } else
+                res.status(400).json({ 'error': true, 'messages': 'Something went wrong' });
+            })
+            .catch(console.error);    
+        }).catch(console.error); 
     },
 
     getBooking : function( req, res ) {
