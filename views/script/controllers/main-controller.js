@@ -56,26 +56,32 @@
 			})
 			.then(function (data) {
 				unWait();
-				sc.resultFlights = data.data;
-				$http.get($rootScope.baseApi + "/flights", 
-					{params: {
-						rate: sc.infor.detail.class,
-						passengers: sc.infor.detail.seats,
-						date: mainService.convertDate(sc.infor.detail.returnDate),
-						start: sc.infor.detail.desAirAport,
-						end: sc.infor.detail.startAirAport
-					}
-				})
-				.then(function (dataReturn) {
-					console.log(data);
-					unWait();
-					sc.returnFlights = dataReturn.data;
+				if (sc.infor.isReturn) {
+					$http.get($rootScope.baseApi + "/flights", 
+						{params: {
+							rate: sc.infor.detail.class,
+							passengers: sc.infor.detail.seats,
+							date: mainService.convertDate(sc.infor.detail.returnDate),
+							start: sc.infor.detail.desAirAport,
+							end: sc.infor.detail.startAirAport
+						}
+					})
+					.then(function (dataReturn) {
+						console.log(data);
+						unWait();
+						sc.resultFlights = data.data;
+						sc.returnFlights = dataReturn.data;
 
-				}, function (error) {
-					unWait();
-					swal('Không tìm thấy!', 'Không tìm thấy chuyến bay phù hợp!', 'error');
-					sc.returnFlights = [];
-				})
+					}, function (error) {
+						unWait();
+						swal('Không tìm thấy!', 'Không tìm thấy chuyến bay phù hợp!', 'error');
+						sc.returnFlights = [];
+					})
+				}
+				else {
+					sc.resultFlights = data.data;
+				}
+				
 
 			}, function (error) {
 				unWait();
@@ -117,11 +123,11 @@
 				&& sc.infor.detail.startDate
 				&& sc.infor.detail.seats
 				&& sc.infor.detail.class
-				);
+				&& (!sc.infor.isReturn || sc.infor.detail.returnDate));
 		}
 
 		sc.validateStep1 = function validateStep1() {
-			return (sc.validateBeforeSearch() && sc.resultFlights.length > 0);
+			return (sc.validateBeforeSearch() && sc.resultFlights.length > 0 && (!sc.infor.isReturn || sc.returnFlights));
 		}
 
 		sc.validateStep2 = function validateStep2() {
@@ -147,7 +153,17 @@
 			postData.CHUYENBAY[0].MUCGIA = flight.MUCGIA;
 			postData.CHUYENBAY[0].GIO = flight.GIO;
 
-			// console.log(postData);
+			if (sc.infor.isReturn) {
+				var returnFlight = sc.returnFlights[sc.infor.selectedReturnFlight];
+				postData.CHUYENBAY[1] = {};
+				postData.CHUYENBAY[1].MACHUYENBAY = returnFlight.MA;
+				postData.CHUYENBAY[1].NGAY = returnFlight.NGAY;
+				postData.CHUYENBAY[1].HANG = returnFlight.HANG;
+				postData.CHUYENBAY[1].MUCGIA = returnFlight.MUCGIA;
+				postData.CHUYENBAY[1].GIO = returnFlight.GIO;
+			}
+
+			console.log(postData);
 
 			$http.post($rootScope.baseApi + "/booking/completed", postData)
 			.success(function (data) {
