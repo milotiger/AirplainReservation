@@ -2,36 +2,41 @@
 	<h4>Tra Cứu Thông Tin Đặt Chỗ</h4>
 </div>
 
-<div class="row" ng-show="search.result">
+<div class="row center" ng-show="search.result">
 	<h5 class="center">Thông Tin Chung</h5>
 	<p><strong>Mã đặt chỗ: </strong>{{search.result.THONGTINDATCHO.MA}}</p>
 	<p><strong>Thời gian đặt chỗ: </strong>{{search.result.THONGTINDATCHO.THOIGIANDATCHO}}</p>
 	<p><strong>Tổng tiền thanh toán: </strong>{{search.result.THONGTINDATCHO.TONGTIEN}}</p>
 	<br>
+	<br>
 	<h5 class="center">Danh Sách Hành Khách</h5>
-	<div ng-repeat="pass in search.result.HANHKHACH">
+	<div ng-repeat="pass in search.result.HANHKHACH" class="row center">
 		<p><strong>{{pass.DANHXUNG}}: </strong>{{pass.TEN}} {{pass.HO}}</p>
 	</div>
-	<h5 class="center">Danh Sách Chuyến Bay</h5>
-		<table class="striped">
-			<thead>
-				<th>Mã Chuyến Bay</th>
-				<th>Ngày Bay</th>
-				<th>Giờ Bay</th>
-				<th>Hạng</th>
-				<th>Mức Giá</th>
-			</thead>
-			<tbody>
-				<tr ng-repeat="flight in search.result.CHANGBAY">
-					<td>{{flight.MACHUYENBAY}}</td>
-					<td>{{flight.NGAY}}</td>
-					<td>{{flight.GIOBAY}}</td>
-					<td>{{flight.HANG}}</td>
-					<td>{{flight.MUCGIA}}</td>
-				</tr>
-			</tbody>
-		</table>
+	<div class="row center">
+		<a href="" class="btn" ng-click="openChangeModal()">Thay đổi thông tin hành khách</a>
 	</div>
+	<br>
+	<h5 class="center">Danh Sách Chuyến Bay</h5>
+	<table class="">
+		<thead>
+			<th>Mã Chuyến Bay</th>
+			<th>Ngày Bay</th>
+			<th>Giờ Bay</th>
+			<th>Hạng</th>
+			<th>Mức Giá</th>
+		</thead>
+		<tbody>
+			<tr ng-repeat="flight in search.result.CHANGBAY">
+				<td>{{flight.MACHUYENBAY}}</td>
+				<td>{{flight.NGAY}}</td>
+				<td>{{flight.GIO}}</td>
+				<td>{{flight.HANG}}</td>
+				<td>{{flight.MUCGIA}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
 </div>
 
 <div class="row center">
@@ -43,4 +48,32 @@
 
 <div class="row center">
 	<a href="" class="btn" ng-click="searchCode()">Tra Cứu</a>
+</div>
+
+<div class="modal" id="changeInfor">
+	<div class="modal-content">
+		<div ng-repeat="pass in copyPass">
+			<h5>Hành Khách {{$index + 1}}</h5>
+			<div class="input-field col m2 s12">
+			<select  ng-model="pass.DANHXUNG">
+					<option value="" disabled selected>Chọn Danh Xưng</option>
+					<option value="MR">Ông</option>
+					<option value="MS">Bà</option>
+				</select>
+				<label>Danh Xưng</label>
+			</div>
+			<div class="input-field col m3 s12">
+			<input id="last_name_pass" type="text" class="validate" ng-model="pass.HO">
+				<label for="last_name_pass">Họ</label>
+			</div>
+			<div class="input-field col m7 s12">
+			<input id="first_name_pass" type="text" class="validate" ng-model="pass.TEN">
+				<label for="first_name_pass">Chữ Lót và Tên</label>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a href="" class="btn modal-close" ng-click="submitChange()">XÁC NHẬN</a>
+		<a href="" class="btn modal-close">QUAY LẠI</a>
+	</div>
 </div>

@@ -9,3 +9,19 @@
 .right{
 	text-align: right;
 }
+
+body{
+	background-image: url('http://eskipaper.com/images/aircraft-background-1.jpg');
+}
+
+.tabs .tab a {
+	color: #26a69a;
+}
+
+.tabs .tab.disabled a {
+	color: #b1dcfb;
+}
+
+.tabs{
+	background-color: rgba(0, 0, 0, 0.15);	
+}
