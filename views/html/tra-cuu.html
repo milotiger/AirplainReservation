@@ -1,1 +1,46 @@
-tra-cuu.html
+<div class="row center">
+	<h4>Tra Cứu Thông Tin Đặt Chỗ</h4>
+</div>
+
+<div class="row" ng-show="search.result">
+	<h5 class="center">Thông Tin Chung</h5>
+	<p><strong>Mã đặt chỗ: </strong>{{search.result.THONGTINDATCHO.MA}}</p>
+	<p><strong>Thời gian đặt chỗ: </strong>{{search.result.THONGTINDATCHO.THOIGIANDATCHO}}</p>
+	<p><strong>Tổng tiền thanh toán: </strong>{{search.result.THONGTINDATCHO.TONGTIEN}}</p>
+	<br>
+	<h5 class="center">Danh Sách Hành Khách</h5>
+	<div ng-repeat="pass in search.result.HANHKHACH">
+		<p><strong>{{pass.DANHXUNG}}: </strong>{{pass.TEN}} {{pass.HO}}</p>
+	</div>
+	<h5 class="center">Danh Sách Chuyến Bay</h5>
+		<table class="striped">
+			<thead>
+				<th>Mã Chuyến Bay</th>
+				<th>Ngày Bay</th>
+				<th>Giờ Bay</th>
+				<th>Hạng</th>
+				<th>Mức Giá</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="flight in search.result.CHANGBAY">
+					<td>{{flight.MACHUYENBAY}}</td>
+					<td>{{flight.NGAY}}</td>
+					<td>{{flight.GIOBAY}}</td>
+					<td>{{flight.HANG}}</td>
+					<td>{{flight.MUCGIA}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="row center">
+	<div class="input-field col m6 offset-m3 s12">
+		<input id="search-code" type="text" class="validate center" ng-model="search.code">
+		<label for="search-code" class="center">Mã Đặt Chỗ</label>
+	</div>
+</div>
+
+<div class="row center">
+	<a href="" class="btn" ng-click="searchCode()">Tra Cứu</a>
+</div>
