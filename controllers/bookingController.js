@@ -59,6 +59,7 @@ let bookingController = {
         			MADATCHO: req.body.MADATCHO,
         			MACHUYENBAY: item.MACHUYENBAY,
         			NGAY: item.NGAY,
+                    GIO: item.GIO,
         			HANG: item.HANG,
         			MUCGIA: item.MUCGIA
         		});
@@ -103,7 +104,7 @@ let bookingController = {
     getBooking : function( req, res ) {
     	let err = false;
     	booking.findOne({ 'MA' : req.params.id }, '-_id -__v', function( err, resultBooking ) {
-    		if( err ) err = true;
+    		if( err || resultBooking == null) res.status(400).json({'error' : true});
     		else {
     			let bookingInfo = {};
     			bookingInfo.THONGTINDATCHO = resultBooking;
