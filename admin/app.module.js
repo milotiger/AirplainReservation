@@ -3,6 +3,7 @@
 (function($){
 	let app = angular.module('myApp',
 		[
-			'ui.router'
+			'ui.router',
+			'datatables'
 		]);
 }(jQuery));

@@ -7,16 +7,19 @@
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.6 -->
-	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./bootstrap/css/bootstrap.min.css">
+	<!-- DataTables -->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+	<link rel="stylesheet" href="./bower_components/angular-datatables/dist/css/angular-datatables.min.css">
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 	<!-- Ionicons -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
 	<!-- Theme style -->
-	<link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-	<link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+	<link rel="stylesheet" href="./dist/css/AdminLTE.min.css">
+	<link rel="stylesheet" href="./dist/css/skins/skin-black.min.css">
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-black sidebar-mini">
 	<div class="wrapper">
 		<!-- Main Header -->
 		<ng-include src="'./template/header.html'"></ng-include>
@@ -54,6 +57,7 @@
 	
 	<!-- jQuery 2.2.3 -->
 	<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="./bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 	<!-- Bootstrap 3.3.6 -->
 	<script src="bootstrap/js/bootstrap.min.js"></script>
 	<!-- AdminLTE App -->
@@ -62,6 +66,7 @@
 	<script src="./bower_components/angular/angular.js"></script>
 	<script src="./app.module.js"></script>
 	<script src="./bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script src="./bower_components/angular-datatables/dist/angular-datatables.min.js"></script>
 	<script src="./app.route.js"></script>
 	<script src="./components/flightController.js"></script>
 
