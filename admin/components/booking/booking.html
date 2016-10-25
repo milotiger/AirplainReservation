@@ -1,6 +1,6 @@
 <div class="box dataTables_wrapper no-footer">
     <div class="box-header">
-        <h3 class="box-title">Flight-Details Collection</h3>
+        <h3 class="box-title">Booking Collection</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
@@ -9,20 +9,18 @@
                 <thead>
                     <tr>
                         <th>MÃ ĐẶT CHỖ</th>
-                        <th>MÃ CHUYẾN BAY</th>
-                        <th>NGÀY</th>
-                        <th>HẠNG</th>
-                        <th>MỨC GIÁ</th>
+                        <th>THỜI GIAN ĐẶT CHỖ</th>
+                        <th>TỔNG TIỀN</th>
+                        <th>TRẠNG THÁI ĐẶT CHỖ</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="flightdetail in listFlightDetails">
-                        <td>{{flightdetail.MADATCHO}}</td>
-                        <td>{{flightdetail.MACHUYENBAY}}</td>
-                        <td>{{flightdetail.NGAY}}</td>
-                        <td>{{flightdetail.HANG}}</td>
-                        <td>{{flightdetail.MUCGIA}}</td>
+                    <tr ng-repeat="booking in listBooking">
+                        <td>{{booking.MA}}</td>
+                        <td>{{booking.THOIGIANDATCHO}}</td>
+                        <td>{{booking.TONGTIEN}}</td>
+                        <td>{{booking.TRANGTHAI}}</td>
                         <td>
                             <button type="button" class="btn btn-warning"><i class="fa fa-edit"></i></button>
                             <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>

@@ -7,6 +7,13 @@ let booking = require('../models/booking');
 let flightDetails = require('../models/flightDetails');
 
 let bookingController = {
+    getAll : function( req , res ) {
+        booking.find({}, function( err, result ) {
+            if( err ) res.status(400).json({'error' : true});
+            else res.status(200).json(result);
+        })
+    },
+
 	booking: function(req, res) {
 		let error = false;
 		let MADATCHO = helper.randomstring(6);

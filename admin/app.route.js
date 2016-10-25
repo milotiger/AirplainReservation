@@ -28,7 +28,8 @@
 			url : 'booking',
 			views : {
 				'subview@' : {
-					templateUrl : './components/booking.html',
+					templateUrl : './components/booking/booking.html',
+					controller : 'bookingController'
 				}
 			}
 		})
@@ -38,6 +39,7 @@
 			views : {
 				'subview@' : {
 					templateUrl : './components/flight-detail/flight-detail.html',
+					controller : 'flightDetailController'
 				}
 			}
 		})
