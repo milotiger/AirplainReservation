@@ -3,9 +3,9 @@
 var flights = require('../models/flights');
 
 var flightController = {
-    getAllFlights : function( req, res ) {
-        flights.find({}, '-_id', function( err, allflights ) {
-            if( err ) res.status(400).json({'error' : true, 'messages' : 'Cant load all flights'});
+    getAllFlights: function(req, res) {
+        flights.find({}, '-_id', function(err, allflights) {
+            if (err) res.status(400).json({ 'error': true, 'messages': 'Cant load all flights' });
             else res.status(200).json(allflights);
         })
     },
@@ -37,7 +37,7 @@ var flightController = {
                     }
                 })
             } else if (Object.keys(req.query).length === 5) { //....url?start=''&end=''&date=''&passengers=''&rate=''
-                flights.find({ NOIDI : req.query.start, NOIDEN : req.query.end, NGAY: req.query.date, HANG: req.query.rate }).where('SOLUONGGHE').gt(req.query.passengers).exec(
+                flights.find({ NOIDI: req.query.start, NOIDEN: req.query.end, NGAY: req.query.date, HANG: req.query.rate }).where('SOLUONGGHE').gt(req.query.passengers).exec(
                     function(err, flights) {
                         if (!err && flights.length !== 0) {
                             res.status(200).json(flights);
@@ -49,23 +49,47 @@ var flightController = {
         }
     },
 
-    addFlight : function( req , res ) {
+    addFlight: function(req, res) {
         let flight = new flights({
-            'MA' : req.body.MA,
-            'NOIDI' : req.body.NOIDI,
-            'NOIDEN' : req.body.NOIDEN,
-            'NGAY' : req.body.NGAY,
-            'GIO' : req.body.GIO,
-            'HANG' : req.body.HANG,
-            'MUCGIA' : req.body.MUCGIA,
-            'SOLUONGGHE' : req.body.SOLUONGGHE,
-            'GIABAN' : req.body.GIABAN
+            'MA': req.body.MA,
+            'NOIDI': req.body.NOIDI,
+            'NOIDEN': req.body.NOIDEN,
+            'NGAY': req.body.NGAY,
+            'GIO': req.body.GIO,
+            'HANG': req.body.HANG,
+            'MUCGIA': req.body.MUCGIA,
+            'SOLUONGGHE': req.body.SOLUONGGHE,
+            'GIABAN': req.body.GIABAN
         });
 
-        flight.save(function ( err ) {
-            if( !err ) res.status(200).json({'error' : false, 'messages' : 'completed'});
-            else res.status(400).json({'error' : true});
+        flight.save(function(err) {
+            if (!err) res.status(200).json({ 'error': false, 'messages': 'completed' });
+            else res.status(400).json({ 'error': true });
         })
+    },
+
+    updateFlight: function(req, res) {
+        flights.remove({ 'MA': req.body.MA, 'HANG': req.body.HANG, 'MUCGIA': req.body.MUCGIA }, function(err, removed) {
+            if (err) return res.status(400).json({ 'error': true });
+            else {
+                let flight = new flights({
+                    'MA': req.body.MA,
+                    'NOIDI': req.body.NOIDI,
+                    'NOIDEN': req.body.NOIDEN,
+                    'NGAY': req.body.NGAY,
+                    'GIO': req.body.GIO,
+                    'HANG': req.body.HANG,
+                    'MUCGIA': req.body.MUCGIA,
+                    'SOLUONGGHE': req.body.SOLUONGGHE,
+                    'GIABAN': req.body.GIABAN
+                });
+
+                flight.save(function(err) {
+                    if (!err) res.status(200).json({ 'error': false, 'messages': 'completed' });
+                    else res.status(400).json({ 'error': true });
+                })
+            }
+        });
     }
 };
 

@@ -10,7 +10,7 @@
                     <th>
                         <div class="form-group add-form">
                             <label>
-                                <input class="form-control" type="text" name="id" ng-model="flight.ma" value="" placeholder="Mã Đặt Chỗ" />
+                                <input class="form-control" type="text" name="id" ng-model="flight.ma" value="" placeholder="Mã Chuyến Bay" />
                             </label>
                         </div>
                     </th>
@@ -79,7 +79,7 @@
             </thead>
         </table>
         <form class="form-inline">
-            <table datatable="ng" class="row-border hover">
+            <table datatable="ng" id="flight-table" class="row-border hover">
                 <thead>
                     <tr>
                         <th>MÃ</th>
@@ -106,7 +106,7 @@
                         <td>{{flight.SOLUONGGHE}}</td>
                         <td>{{flight.GIABAN}}</td>
                         <td>
-                            <button type="button" class="btn btn-warning"><i class="fa fa-edit"></i></button>
+                            <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#updateFlightModal" ng-click="editFlight($index)"><i class="fa fa-edit"></i></button>
                             <button type="button" class="btn btn-danger"><i class="fa fa-trash-o"></i></button>
                         </td>
                     </tr>
@@ -115,4 +115,70 @@
         </form>
     </div>
     <!-- /.box-body -->
+</div>
+
+<div class="modal fade" id="updateFlightModal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Flight</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <form class="form-inline">
+                        <div class="col-md-3 col-md-offset-2">
+                            <label for="noidi-flight">Nơi Đi</label>
+                        </div>
+                        <input style="margin-top: -6px; margin-bottom: 2px;" ng-model="current.NOIDI" type="text" class="form-control" id="noidi-flight" value="{{current.NOIDI}}">
+                    </form>
+                </div>
+                <div class="row">
+                    <form class="form-inline">
+                        <div class="col-md-3 col-md-offset-2">
+                            <label for="noiden-flight">Nơi Đến</label>
+                        </div>
+                        <input style="margin-top: -6px; margin-bottom: 2px;" ng-model="current.NOIDEN" type="text" class="form-control" id="noiden-flight" value="{{current.NOIDEN}}">
+                    </form>
+                </div>
+                <div class="row">
+                    <form class="form-inline">
+                        <div class="col-md-3 col-md-offset-2">
+                            <label for="ngay-flight">Ngày Bay</label>
+                        </div>
+                        <input style="margin-top: -6px; margin-bottom: 2px;" ng-model="current.NGAY" type="text" class="form-control" id="ngay-flight" value="{{current.NGAY}}">
+                    </form>
+                </div>
+                <div class="row">
+                    <form class="form-inline">
+                        <div class="col-md-3 col-md-offset-2">
+                            <label for="gio-flight">Giờ Bay</label>
+                        </div>
+                        <input style="margin-top: -6px; margin-bottom: 2px;" ng-model="current.GIO" type="text" class="form-control" id="gio-flight" value="{{current.GIO}}">
+                    </form>
+                </div>
+                <div class="row">
+                    <form class="form-inline">
+                        <div class="col-md-3 col-md-offset-2">
+                            <label for="ghe-flight">Số Lượng Ghế</label>
+                        </div>
+                        <input style="margin-top: -6px; margin-bottom: 2px;" ng-model="current.SOLUONGGHE" type="text" class="form-control" id="ghe-flight" value="{{current.SOLUONGGHE}}">
+                    </form>
+                </div>
+                <div class="row">
+                    <form class="form-inline">
+                        <div class="col-md-3 col-md-offset-2">
+                            <label for="giaban-flight">Giá Bán</label>
+                        </div>
+                        <input style="margin-top: -6px; margin-bottom: 2px;" ng-model="current.GIABAN" type="text" class="form-control" id="giaban-flight" value="{{current.GIABAN}}">
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" ng-click="updateFlight()" data-dismiss="modal">Update</button>
+                <button class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>

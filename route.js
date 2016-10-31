@@ -9,6 +9,7 @@ var flightDetailController = require('./controllers/flightDetailController');
 route.get('/api/all-flights',flightController.getAllFlights);
 route.get('/api/flights' , flightController.getFlights);
 route.post('/api/flights', flightController.addFlight);
+route.put('/api/flights', flightController.updateFlight);
 
 route.get('/api/passengers', passengerController.getAllPassengers);
 
