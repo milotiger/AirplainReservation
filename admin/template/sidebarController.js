@@ -23,13 +23,19 @@
                 let config = {
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    transformRequest: function(obj) {
+                        var str = [];
+                        for (var p in obj)
+                            str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                        return str.join("&");
                     }
                 }
 
                 $http.defaults.headers.common['Authorization'] = 'Basic ' + 'ZmxpZ2h0OmZsaWdodA==';
 
                 $http.post('../api/oauth2/token', data, config).success(function(res) {
-                    console.log(res);
+                    $http.defaults.headers.common['Authorization'] = 'Bearer ' + res.access_token.value;
                 });
             }
         }
