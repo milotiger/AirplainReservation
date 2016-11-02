@@ -1,4 +1,4 @@
-<aside class="main-sidebar">
+<aside class="main-sidebar" ng-controller="sidebarController">
 	<!-- sidebar: style can be found in sidebar.less -->
 	<section class="sidebar">
 
@@ -18,16 +18,16 @@
 		<ul class="sidebar-menu">
 			<li class="header">Database</li>
 			<!-- Optionally, you can add icons to the links -->
-			<li class="active"><a href="#/flights"><i class="fa fa-plane"></i> <span>Flights</span></a></li>
+			<li class="active" ng-click="checkAuthenticated()"><a href="#"><i class="fa fa-plane"></i> <span>Flights</span></a></li>
 			<li class="treeview">
-				<a href="#/booking"><i class="fa fa-link"></i> <span>Booking</span>
+				<a href="#/booking" ng-click="checkAuthenticated()"><i class="fa fa-link"></i> <span>Booking</span>
 					<span class="pull-right-container">
 						<i class="fa fa-angle-left pull-right"></i>
 					</span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="#/passenger"><i class="fa fa-users"></i> <span>Passengers</span> </a></li>
-					<li><a href="#/flight-details"><i class="fa fa-info"></i> <span>Flight Details</span> </a></li>
+					<li><a href="#/passenger" ng-click="checkAuthenticated()"><i class="fa fa-users" ></i> <span>Passengers</span> </a></li>
+					<li><a href="#/flight-details" ng-click="checkAuthenticated()"><i class="fa fa-info"></i> <span>Flight Details</span> </a></li>
 				</ul>
 			</li>
 		</ul>

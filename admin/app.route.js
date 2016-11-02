@@ -2,7 +2,7 @@
 
 (function($){
 	let app = angular.module('myApp');
-	app.config(function( $stateProvider, $urlRouterProvider ) {
+	app.config(function( $stateProvider, $urlRouterProvider,$httpProvider) {
 		$urlRouterProvider.otherwise('/');
 		$stateProvider
 		.state('app', {
@@ -52,6 +52,8 @@
 					controller : 'passengerController'
 				}
 			}
-		})
+		});
+
+		$httpProvider.defaults.headers.common['Authorization'] = 'Basic ' + 'ZmxpZ2h0OmZsaWdodA==';
 	});
 }(jQuery));

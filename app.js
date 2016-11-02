@@ -1,7 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var passport = require('passport');
 var route = require('./route');
+var session = require('express-session');
+var path = require('path');
 
 var app = express();
 
@@ -17,14 +20,28 @@ var allowCrossDomain = function(req, res, next) {
 
 app.use(allowCrossDomain);
 
+// Set view engine to ejs
+app.set('view engine', 'ejs');
+
 app.use(bodyParser.urlencoded({ extended : true }));
 app.use(bodyParser.json());
+
+// Use express session support since OAuth2orize requires it
+app.use(session({
+	secret: 'Super Secret Session Key',
+	saveUninitialized: true,
+	resave: true
+}));
+
+// Use the passport package in our application
+app.use(passport.initialize());
 
 app.use('/', route);
 
 app.get('/admin', function( req, res ) {
-	res.redirect('admin.html');
+	res.sendFile(path.join(__dirname, './admin', 'admin.html'));
 })
+
 
 app.use(express.static(__dirname + '/views'));
 app.use(express.static(__dirname + '/admin'));
